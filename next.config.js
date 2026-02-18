@@ -1,6 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // output: 'export', // Will be added later for SSG
-};
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/
+});
 
-module.exports = nextConfig;
+module.exports = withMDX({
+  pageExtensions: ['ts', 'tsx', 'mdx']
+});
