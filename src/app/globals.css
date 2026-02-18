@@ -10,8 +10,8 @@ body {
   background: #fcfcfb;
   color: #111827;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -28,8 +28,4 @@ a {
 
 .font-serif {
   font-family: ui-serif, Georgia, 'Times New Roman', serif;
-}
-
-.main-column {
-  max-width: 70ch;
 }
