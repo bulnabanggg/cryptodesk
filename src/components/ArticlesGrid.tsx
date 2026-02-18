@@ -29,57 +29,59 @@ export default function ArticlesGrid({ posts }: { posts: PostMeta[] }) {
 
   return (
     <section>
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap gap-2 overflow-x-auto pb-1">
-          <button
-            onClick={() => setActiveCategory('all')}
-            className={`rounded-full border px-3 py-1 text-xs ${activeCategory === 'all' ? 'border-gray-900 text-gray-900' : 'border-gray-300 text-gray-600'}`}
-          >
-            All
-          </button>
-          {categories.map((c) => (
+      <div className="bg-[#3b524b] px-4 py-4 rounded-xl">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-2 overflow-x-auto">
             <button
-              key={c}
-              onClick={() => setActiveCategory(c)}
-              className={`rounded-full border px-3 py-1 text-xs ${activeCategory === c ? 'border-gray-900 text-gray-900' : 'border-gray-300 text-gray-600'}`}
+              onClick={() => setActiveCategory('all')}
+              className={`rounded-full px-3 py-1 text-xs ${activeCategory === 'all' ? 'bg-white text-gray-900' : 'bg-[#2f403a] text-white/90'}`}
             >
-              {c}
+              All
             </button>
-          ))}
+            {categories.map((c) => (
+              <button
+                key={c}
+                onClick={() => setActiveCategory(c)}
+                className={`rounded-full px-3 py-1 text-xs ${activeCategory === c ? 'bg-white text-gray-900' : 'bg-[#2f403a] text-white/90'}`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as SortOption)}
+            className="rounded-xl border border-white/10 bg-[#2f403a] px-4 py-2 text-sm text-white focus:outline-none focus:ring-4 focus:ring-white/10"
+          >
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="category">Category A–Z</option>
+          </select>
         </div>
-        <select
-          value={sort}
-          onChange={(e) => setSort(e.target.value as SortOption)}
-          className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700"
-        >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="category">Category A–Z</option>
-        </select>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((post) => (
-          <article key={post.slug} className="rounded-xl bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-xl">
-              <Image
-                src={post.coverImage || '/images/cover-placeholder.jpg'}
-                alt={post.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-5">
-              <div className="text-xs uppercase tracking-widest text-gray-500">{post.category}</div>
-              <div className="mt-2 text-sm text-gray-500">{post.date}</div>
-              <h3 className="mt-2 font-serif text-[22px] leading-snug text-gray-900">
-                <Link href={`/blog/${post.slug}`} className="hover:text-[#2563eb]">
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+            <article className="rounded-2xl border border-gray-200 bg-white shadow-sm transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-2xl">
+                <Image
+                  src={post.coverImage || '/placeholder.jpg'}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <div className="text-xs uppercase tracking-widest text-gray-500">{post.category}</div>
+                <div className="mt-2 text-sm text-gray-500">{post.date}</div>
+                <h3 className="mt-2 font-serif text-[22px] leading-snug text-gray-900">
                   {post.title}
-                </Link>
-              </h3>
-              <p className="mt-2 text-sm text-gray-600 line-clamp-3">{post.description}</p>
-            </div>
-          </article>
+                </h3>
+                <p className="mt-2 text-sm text-gray-600 line-clamp-3">{post.description}</p>
+              </div>
+            </article>
+          </Link>
         ))}
       </div>
     </section>
