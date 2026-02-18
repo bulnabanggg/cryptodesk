@@ -11,6 +11,9 @@ export default function CategoryPage({ params }: { params: { category: string } 
 
   return (
     <main className="container py-10">
+      <div className="mb-6 text-sm text-gray-500">
+        <Link href="/">← Back to all posts</Link>
+      </div>
       <h1 className="text-[28px] font-semibold mb-6">Category: {params.category}</h1>
       <div>
         {posts.map(({ meta }) => (
@@ -21,7 +24,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
               </Link>
             </h2>
             <p className="mt-2 text-gray-600">{meta.description}</p>
-            <div className="mt-2 text-sm text-gray-500">{meta.date}</div>
+            <div className="mt-2 text-sm text-gray-500">{meta.date} • {meta.readingTime} • {meta.author}</div>
           </article>
         ))}
       </div>

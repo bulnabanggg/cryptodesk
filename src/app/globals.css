@@ -7,11 +7,11 @@
 }
 
 body {
-  background: #fdfdfc;
+  background: #fafafa;
   color: #111827;
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -26,7 +26,12 @@ a:hover {
 }
 
 .container {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+.prose h2,
+.prose h3 {
+  font-weight: 600;
 }
