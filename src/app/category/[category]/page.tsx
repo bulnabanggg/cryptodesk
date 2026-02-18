@@ -11,12 +11,16 @@ export default function CategoryPage({ params }: { params: { category: string } 
 
   return (
     <main className="container py-12">
-      <h1 className="text-2xl font-bold mb-6">Category: {params.category}</h1>
-      <div className="grid gap-6">
+      <h1 className="text-[32px] font-semibold mb-6">Category: {params.category}</h1>
+      <div className="grid gap-8">
         {posts.map(({ meta }) => (
           <article key={meta.slug} className="card">
-            <h2 className="text-xl font-semibold">
-              <Link href={`/blog/${meta.slug}`} className="text-indigo-600 hover:underline">
+            <div className="flex items-center justify-between">
+              <span className="badge">{meta.category}</span>
+              <span className="text-sm text-gray-500">{meta.date}</span>
+            </div>
+            <h2 className="mt-3 text-[24px] font-semibold text-gray-900">
+              <Link href={`/blog/${meta.slug}`} className="hover:text-[#2563eb]">
                 {meta.title}
               </Link>
             </h2>

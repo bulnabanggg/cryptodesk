@@ -36,7 +36,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   return (
     <main className="container py-12">
       <article className="prose prose-lg max-w-none">
-        <h1>{meta.title}</h1>
+        <h1 className="text-[40px] font-semibold tracking-tight">{meta.title}</h1>
         <p className="text-gray-500">{meta.date} · {meta.category}</p>
         {mdxContent}
       </article>

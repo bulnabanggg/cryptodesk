@@ -3,10 +3,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    default: 'CryptoDesk',
-    template: '%s | CryptoDesk'
+    default: 'CryptoDesk Research',
+    template: '%s | CryptoDesk Research'
   },
-  description: 'CryptoDesk: SEO-first crypto research and analysis.'
+  description: 'CryptoDesk Research: professional crypto market intelligence and analysis.'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
