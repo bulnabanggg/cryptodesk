@@ -1,33 +1,60 @@
 import Link from 'next/link';
 import { getAllPosts } from '../lib/posts';
+import ArticlesGrid from '@/components/ArticlesGrid';
 
 export default function HomePage() {
-  const posts = getAllPosts();
+  const posts = getAllPosts().map((p) => p.meta);
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-gray-200">
-        <div className="container py-6">
-          <h1 className="text-3xl font-bold">CryptoDesk</h1>
-          <p className="mt-2 text-sm text-gray-500">Clear, research‑first crypto notes.</p>
+    <div className="min-h-screen bg-[#eef2ef]">
+      <header className="border-b border-gray-200 bg-white">
+        <div className="container py-4 flex items-center justify-between">
+          <div className="text-lg font-semibold">CryptoDesk</div>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600">
+            {['Research', 'Markets', 'Bitcoin', 'Ethereum'].map((n) => (
+              <Link key={n} href="#" className="hover:text-[#2563eb]">
+                {n}
+              </Link>
+            ))}
+          </nav>
+          <button className="rounded-full bg-[#2563eb] px-4 py-2 text-xs font-semibold text-white">Subscribe</button>
         </div>
       </header>
 
-      <main className="container py-14">
-        <section>
-          {posts.map(({ meta }) => (
-            <article key={meta.slug} className="border-b border-gray-200 py-6">
-              <h2 className="text-2xl font-semibold">
-                <Link href={`/blog/${meta.slug}`} className="hover:text-[#2563eb]">
-                  {meta.title}
-                </Link>
-              </h2>
-              <p className="mt-2 text-gray-600 line-clamp-2">{meta.description}</p>
-              <div className="mt-2 text-sm text-gray-500">{meta.date} • {meta.category}</div>
-            </article>
-          ))}
-        </section>
+      <section className="bg-gray-900 text-white">
+        <div className="container py-10">
+          <h1 className="font-serif text-[56px] tracking-tight">Articles</h1>
+          <p className="mt-2 text-gray-300">Curated research, editorial insights, and market context.</p>
+        </div>
+      </section>
+
+      <main className="container py-10">
+        <ArticlesGrid posts={posts} />
       </main>
+
+      <footer className="bg-gray-900 text-gray-300">
+        <div className="container py-12 grid gap-8 md:grid-cols-3">
+          <div>
+            <div className="text-white text-lg font-semibold">CryptoDesk</div>
+            <p className="mt-2 text-sm text-gray-400">Premium crypto research and editorial analysis.</p>
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-white">Resources</div>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li>About</li>
+              <li>Research</li>
+              <li>Markets</li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-white">Subscribe</div>
+            <div className="mt-3 flex gap-2">
+              <input className="w-full rounded-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm" placeholder="Email address" />
+              <button className="rounded-md bg-[#2563eb] px-3 py-2 text-sm font-semibold text-white">Join</button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

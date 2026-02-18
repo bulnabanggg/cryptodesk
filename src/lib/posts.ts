@@ -9,6 +9,7 @@ export type PostMeta = {
   category: string;
   tags: string[];
   slug: string;
+  coverImage?: string;
 };
 
 const postsDir = path.join(process.cwd(), 'content', 'posts');
@@ -19,8 +20,12 @@ export function getAllPosts() {
     const filePath = path.join(postsDir, file);
     const source = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(source);
+    const meta = data as PostMeta;
     return {
-      meta: data as PostMeta,
+      meta: {
+        ...meta,
+        coverImage: meta.coverImage || '/images/cover-placeholder.jpg'
+      },
       content
     };
   }).sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
@@ -35,7 +40,8 @@ export function getPostBySlug(slug: string) {
   if (!file) return null;
   const source = fs.readFileSync(path.join(postsDir, file), 'utf8');
   const { data, content } = matter(source);
-  return { meta: data as PostMeta, content };
+  const meta = data as PostMeta;
+  return { meta: { ...meta, coverImage: meta.coverImage || '/images/cover-placeholder.jpg' }, content };
 }
 
 export function getAllCategories() {
