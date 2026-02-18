@@ -16,7 +16,7 @@ export default function HomePage() {
           <article key={meta.slug} className="card">
             <div className="text-xs uppercase tracking-wide text-gray-500">{meta.category}</div>
             <h2 className="mt-2 text-xl font-semibold">
-              <Link href={`/blog/${meta.slug}`} className="text-accent hover:underline">
+              <Link href={`/blog/${meta.slug}`} className="text-indigo-600 hover:underline">
                 {meta.title}
               </Link>
             </h2>

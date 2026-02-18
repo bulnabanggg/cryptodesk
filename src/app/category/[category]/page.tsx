@@ -16,7 +16,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
         {posts.map(({ meta }) => (
           <article key={meta.slug} className="card">
             <h2 className="text-xl font-semibold">
-              <Link href={`/blog/${meta.slug}`} className="text-accent hover:underline">
+              <Link href={`/blog/${meta.slug}`} className="text-indigo-600 hover:underline">
                 {meta.title}
               </Link>
             </h2>

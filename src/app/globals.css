@@ -7,15 +7,28 @@
 }
 
 body {
-  @apply bg-background text-foreground font-sans antialiased;
+  background: #FAFAFA;
+  color: #1f2937;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  @apply mx-auto max-w-[720px] px-6;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .card {
-  @apply border border-gray-200 bg-white rounded-lg p-5 transition-shadow hover:shadow-md;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  transition: box-shadow 150ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
