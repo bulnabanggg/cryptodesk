@@ -7,9 +7,9 @@
 }
 
 body {
-  background: #fcfcfb;
-  color: #111827;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
@@ -21,11 +21,33 @@ a {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-.font-serif {
-  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+.card {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2563eb;
+  background: #eaf2ff;
+  border: 1px solid #dbeafe;
 }
