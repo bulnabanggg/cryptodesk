@@ -34,11 +34,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const { content: mdxContent } = await compileMDX({ source: content });
 
   return (
-    <main className="container py-10">
+    <main className="container py-12">
       <article className="prose prose-lg max-w-none">
         <h1 className="text-[40px] font-semibold tracking-tight">{meta.title}</h1>
-        <p className="mt-2 text-gray-600">{meta.description}</p>
-        <p className="mt-2 text-sm text-gray-500">{meta.date} · {meta.category}</p>
+        <p className="text-gray-500">{meta.date} · {meta.category}</p>
         {mdxContent}
       </article>
     </main>
