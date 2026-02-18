@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getAllCategories, getPostsByCategory } from '@/lib/posts';
+import { getAllCategories, getPostsByCategory } from '../../../lib/posts';
 
 export async function generateStaticParams() {
   const categories = getAllCategories();

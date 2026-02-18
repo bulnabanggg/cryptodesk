@@ -1,5 +1,5 @@
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { getAllPosts, getPostBySlug } from '../../../lib/posts';
 import type { Metadata } from 'next';
 
 export async function generateStaticParams() {
