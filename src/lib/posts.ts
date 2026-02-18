@@ -9,8 +9,6 @@ export type PostMeta = {
   category: string;
   tags: string[];
   slug: string;
-  author?: string;
-  readingTime?: string;
 };
 
 const postsDir = path.join(process.cwd(), 'content', 'posts');
@@ -21,11 +19,8 @@ export function getAllPosts() {
     const filePath = path.join(postsDir, file);
     const source = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(source);
-    const words = content.split(/\s+/).filter(Boolean).length;
-    const minutes = Math.max(1, Math.ceil(words / 200));
-    const author = (data as PostMeta).author || 'CryptoDesk Research';
     return {
-      meta: { ...(data as PostMeta), author, readingTime: `${minutes} min read` },
+      meta: data as PostMeta,
       content
     };
   }).sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
@@ -40,10 +35,7 @@ export function getPostBySlug(slug: string) {
   if (!file) return null;
   const source = fs.readFileSync(path.join(postsDir, file), 'utf8');
   const { data, content } = matter(source);
-  const words = content.split(/\s+/).filter(Boolean).length;
-  const minutes = Math.max(1, Math.ceil(words / 200));
-  const author = (data as PostMeta).author || 'CryptoDesk Research';
-  return { meta: { ...(data as PostMeta), author, readingTime: `${minutes} min read` }, content };
+  return { meta: data as PostMeta, content };
 }
 
 export function getAllCategories() {
